@@ -1,1 +1,1 @@
-Cookie.set('u_name', 'Fabian', {expires: none});
+Cookies.set('u_name', 'Fabian', {expires: none});
