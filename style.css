@@ -1,0 +1,120 @@
+body
+{
+	transition-duration: 0.5s;
+}
+hr.up
+{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+#jezyk_polski
+{
+	width: 40%;
+	margin-left: 5px;
+}
+#articles .col-lg-4
+{
+}
+#jezyk_polski:hover img, #jezyk_english:hover img
+{
+	animation-name: obrot;
+	animation-duration: 0.5s;	
+}
+#jezyk_english
+{
+	width: 40%;
+	margin-right: 5px;
+}
+#jezyk_english:hover, #jezyk_polski:hover
+{
+	opacity: 0.9;
+}
+#nawigacja
+{
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0px;
+	z-index: 5;
+}
+#pokaz_canvas img, #pokaz_hue img
+{
+	width: 50%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+#wybor_jezyka
+{
+	background-color: rgb(34,34,34); 
+	border-color: rgb(34,34,34);
+	height: auto;
+}
+.carousel
+{
+	background-color: rgb(245, 245, 245);
+	margin-bottom: 20px;
+}
+#homekit img
+{
+	width: 250px;
+	height: 250px;
+}
+#AI img, #o_nas img
+{
+	overflow: hidden;
+	width: 250px;
+	height: 250px;
+}
+#homekit:hover img, #AI:hover img, #o_nas:hover img
+{
+	animation-name: obrot;
+	animation-duration: 0.7s;
+}
+#homekit:hover, #AI:hover, #o_nas:hover
+{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.carousel-indicators li
+{
+	background-color: rgb(34,34,34);
+}
+.carousel-indicators .active
+{
+	background-color: #A29C9D;
+}
+.menu
+{
+	width: 80%;
+	height: auto;
+	opacity: 0.6;
+}
+article.well
+{
+	padding-bottom: 50px;
+}
+.komentarz
+{
+	margin-left: 20px;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 85%;
+}
+@keyframes obrot {
+	0%   
+	{
+		transform: rotate(20deg);		
+	}
+	25% 
+	{
+		transform: rotate(-20deg);
+	}
+	50% 
+	{
+		transform: rotate(20deg);
+	}
+	100%
+	{
+		transform: rotate(0deg);
+	}
+}
