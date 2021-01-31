@@ -1,339 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- typowe meta dane w moich projektach -->
 	<meta charset="utf-8">
-	<meta name="description" content="Live Smart!">
-	<meta name="keywords" content="Live Smart, Apple, Smart House, Smart Dom, AI">
-	<meta name="author" content="Paweł Krężel">
-	<meta name="company" content="ZST Rybnik">
-	<meta name="robots" content="all">
-	<!--Boot strap-->   
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<!-- importowanie ładniejszej czcionki, arkusza stylów i skryptów JavaScript -->
-	<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Lobster&family=Pacifico&family=Roboto:ital@0;1&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Live Smart!</title>
-	<style type="text/css" id="style-jezyk"></style>
-	<style type="text/css" id="style-czcionka"></style>
-	<link rel="stylesheet" type="text/css" id="style-motyw">
+	<!-- bootsrap & custom stylesheet-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Motivation</title>
 </head>
-
-<body class="container">
-<!-- niewidoczny przycisk, potrzebny do realizacji skryptów -->
-<button id="wybor_jezyka"style="display: none;" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#jezyk"></button>
-<!-- menu rozwijane -->
-<nav class="navbar navbar-inverse" id="nawigacja">
-	<section class="container-fluid">
-		<section class="navbar-header">
-			<a class="navbar-brand" onclick="powrot()"><span class="polski">Powrót</span><span class="english">Return</span></a>
-		</section>
-		<ul class="nav navbar-nav">
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown"><span class="polski">czcionka</span><span class="english">Font</span>
-				<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a onclick="zmiana_na_wybrana_czcionke('Roboto')" style="font-family: 'Roboto';">Roboto</a></li>
-					<li><a onclick="zmiana_na_wybrana_czcionke('Lobster')" style="font-family: 'Lobster';">Lobster</a></li>
-					<li><a onclick="zmiana_na_wybrana_czcionke('Ubuntu')" style="font-family: 'Ubuntu';">Ubuntu</a></li>
-					<li><a onclick="zmiana_na_wybrana_czcionke('Inconsolata')" style="font-family: 'Inconsolata';">Inconsolata</a></li>
-					<li><a onclick="zmiana_na_wybrana_czcionke('Pacifico')" style="font-family: 'Pacifico';">Pacifico</a></li>
-				</ul>
-			</li>
-			<li><a onclick="document.getElementById('wybor_jezyka').click();"><section class="polski">Język</section><section class="english">Language</section></a></li>
-			<li><a onclick="zmiana_motywu()"><span class="english">Theme: </span><span class="polski">Motyw: </span><span id="jasny"><span class="polski">jasny</span><span class="english">light</span></span><span id="ciemny"><span class="polski">ciemny</span><span class="english">dark</span></span></a></li>
-		</ul>
-	</section>
-</nav>
-<!-- nagłówek strony -->
-	<header class="jumbotron text-center" id="main_header">
-		<section class="row">
-			<section class="col-sm-2"></section>
-			<section class="col-sm-8"><h1>Live Smart!</h1></section>
-			<section class="col-sm-2">
-				</section>
-		</section>
-		<p class="polski">podążanie do świata inteligentnych technologii</p>
-		<p class="english">Diving into the world of smart technologies </p>
+<body>
+	<header class="jumbotron text-center">
+		<h1>Hello, <div id="user_name">Fabian</div></h1>
+		<p id="quote">A good thing about the future is that it comes one second at a time</p>
 	</header>
 
-	<!-- okno dialogowe z wyborem języka -->
-	<dialog id="jezyk" class="modal fade" role="dialog">
-	  <section class="modal-dialog">
+	<section class="container">
+		<h2 class="text-left">Challenges
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square" onclick="CreateGroup()"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></h2>
 
-	    <section class="modal-content">
-	      <header class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title"><p class="polski">wybierz język</p><p class="english">choose your language</p></h4>
-	      </header>
-	      <main class="modal-body text-center">
-	        <button id="jezyk_english" class="btn btn-info btn-lg" onclick="switch_to_english()"><img src="grafika/uk_flag_64.png"><p style="margin-top: 10px;">English (UK)</p></button>
-	        <button id="jezyk_polski" class="btn btn-info btn-lg" onclick="zmien_na_polski()"><img src="grafika/poland_flag_64.png"><p style="margin-top: 10px;">Polski</p></button>
-	      </main>
-	      <footer class="modal-footer">
-	        <button type="button" class="btn btn-default polski" data-dismiss="modal">Zamknij</button>
-	        <button type="button" class="btn btn-default english" data-dismiss="modal">Close</button>
-	      </footer>
-	    </section>
-
-	  </section>
-	</dialog>
-<!-- menu wyboru artykułów -->
-	<nav class="row" id="articles">
-		<!-- thumbnail pierwszego artykułu -->
-		<section class="col-lg-4 well text-center" id="homekit" onclick="pokaz_artykul('homekit')">
-			<section class="row">
-				<header class="col-sm-12">
-					<h1>HomeKit<br>&nbsp;</h1>
-				</header>
-				<section class="col-sm-12">
-					<img class="img-rounded" src="grafika/homekit.png">
-					<hr>
-				</section>
-				<article class="col-sm-12 text-left">
-					<p class="polski">Chcesz zautomatyzować swój dom? Poznaj HomeKit - oprogramowaniez umożliwiające sterowanie Twoim domem przy pomocy telefonu, laptopa lub zegarka.</p>
-					<p class="english">Want to automate your house? Introducing HomeKit - software allowing you to control yout house using your phone, laptop or a smartwatch.</p>
-				</article>
+		<section id="challenges_container">
+			<section class="well" id="challange_ID">
+				<h4>Challange name
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+				</h4>
+				<i class="glyphicon glyphicon-unchecked"></i> Task1
 			</section>
 		</section>
-		<!-- thumbnail drugiego artykułu -->
-		<section class="col-lg-4 well text-center" id="AI" onclick="pokaz_artykul('AI')">
-			<section class="row">
-				<header class="col-sm-12">
-					<h1 class="polski">Potencjał sztucznej inteligencji</h1>
-					<h1 class="english">The potential of artificial intelligence</h1>
-				</header>
-				<section class="col-sm-12">
-					<img class="img-rounded" src="grafika/AI.jpg">
-					<hr>
-				</section>
-				<article class="col-sm-12 text-left">
-					<p class="polski">Dowiedz się jak jeden z gigantów technologicznych wykorzystuje sztuczną inteligencję do zaoszczędzenia pieniędzy i ocalenia planety</p>
-					<p class="english">Find out how one of the tech giants uses AI to save money and the planet<br>&nbsp;</p>
-				</article>
-			</section>
-		</section>
-		<!-- thumbnail trzeciego artykułu -->
-		<section class="col-lg-4 well text-center" id="o_nas" onclick="pokaz_artykul('o_nas')">
-			<section class="row">
-				<header class="col-sm-12">
-					<h1 class="polski">O nas<br>&nbsp;</h1>
-					<h1 class="english">About us<br>&nbsp;</h1>
-				</header>
-				<section class="col-sm-12">
-					<img class="img-rounded" src="grafika/about_us.png">
-					<hr>
-				</section>
-				<article class="col-sm-12 text-left">
-					<p class="polski">Artykuł idealny dla nauczyciela, który chce ocenić ten projekt! Tutaj wspomniano o wszystkich funkcjonalnościach wartych uwagi.</p>
-					<p class="english">This article is perfect for a teacher, who wants to grade this project! Here are mentioned all the qualities that are worth pointing out.</p>
-				</article>
-			</section>
-		</section>
-	</nav>
-	<!-- zawartość pierwszego artykułu -->
-	<article id="homekit_article" class="well" style="display: none;">
-		<header class="text-center">
-			<img class="img-rounded" src="grafika/homekit.png">
-			<h2>HomeKit</h2>
-		</header>
-		<section>
-			<blockquote class="english">
-				With the Home app, you can easily and securely control your HomeKit accessories from all your Apple devices. Turn off the lights, see who’s at the front door, adjust your living room temperature, turn up the music, and so much more. And with the new HomeKit Secure Video capability and HomeKit‑enabled routers, it’s all even more secure. The Home app makes all your connected devices work harder — and smarter — for you.
-				<footer>Apple</footer>
-			</blockquote>
-			<blockquote class="polski">
-				Przy pomocy aplikacji Home, możesz łatwo i bezpiecznie kontrolować Twoje akcesoria HomeKit z wszyskich urządzeń Apple - wyłączaj światła, sprawdzaj kto stoi przy drzwiach wejściowych, reguluj temperaturę w salonie, włączaj muzykę i rób wiele więcej. Z nową funkcją HomeKit Secure Video i routerami HomeKit wszystko jest jeszcze lepiej zabezpieczone. Aplikacja Home sprawia że wszystkie Twoje urządzenia pracują wytrwalej i mądrzej - dla Ciebie.
-				<footer>Apple</footer>
-			</blockquote>
-			<h3 class="polski">Zestaw Nanoleaf Canvas Smarter Light Kit</h3>
-			<h3 class="english">Nanoleaf Canvas Smarter Light Kit</h3>
 
-			<!-- zastosowanie galerii zdjęć przy pomocy bootstrapa-->
-			<div id="carousel_canvas" class="carousel slide well" data-ride="carousel">
-				  <ol class="carousel-indicators">
-					    <li data-target="#carousel_canvas" data-slide-to="0" class="active"></li>
-					    <li data-target="#carousel_canvas" data-slide-to="1"></li>
-					    <li data-target="#carousel_canvas" data-slide-to="2"></li>
-					    <li data-target="#carousel_canvas" data-slide-to="3"></li>
-				  </ol>
 
-			 <div class="carousel-inner" role="listbox" id="pokaz_canvas">
-				<div class="item active">
-					<img src="grafika/canvas_1.jpg" alt="canvas">
-			    </div>
-
-			    <div class="item">
-				    <img src="grafika/canvas_2.jpg" alt="canvas">
-			    </div>
-
-			    <div class="item">
-				    <img src="grafika/canvas_3.jpg" alt="canvas">
-			    </div>
-
-			    <div class="item">
-				    <img src="grafika/canvas_4.jpg" alt="canvas">
-			    </div>
-			  <a class="left carousel-control" href="#carousel_canvas" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel_canvas" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			</div>
-		</div>
-			<p class="polski well">Zrelaksuj się dzięki zestawowi Nanoleaf Canvas Smarter Light Kit, który działa na zmysł wzroku, słuchu i dotyku, zapewniając dużo więcej niż tylko oświetlenie. Ten system oświetlenia jest gotowy do użycia od razu po podłączeniu i ułatwia życie już od pierwszych chwil po rozpakowaniu. Podświetlenie krawędziowe, synchronizacja muzyki w czasie rzeczywistym dzięki wbudowanej technologii Rhythm oraz możliwość sterowania za pomocą dotyku i głosu sprawiają, że Twój dom jest nie tylko nowoczesny, ale i inteligentny.</p>
-			<p class="english well">Delight your senses with the Nanoleaf Canvas Smarter Light Kit, which plays on sight, sound and touch for a lighting experience that goes beyond mere function. This plug-and-play lighting system makes life easier straight out of the box. Its edge-lit design, built-in Rhythm technology for real-time music sync, and touch and voice control transforms your home from smart to intelligent.</p>
-		</section>
-		<hr class="up">
-		<h3 class="english">Philips Hue Play White and Colour Ambience Light Bar</h3>
-		<h3 class="polski">Podłużna lampka Philips Hue Play White and Color Ambience </h3>
-
-			<div id="carousel_philips_hue" class="carousel slide well" data-ride="carousel">
-				  <ol class="carousel-indicators">
-					    <li data-target="#carousel_philips_hue" data-slide-to="0" class="active"></li>
-					    <li data-target="#carousel_philips_hue" data-slide-to="1"></li>
-					    <li data-target="#carousel_philips_hue" data-slide-to="2"></li>
-				  </ol>
-			<!-- kolejna galeria zdjęć -->
-			 <div class="carousel-inner" role="listbox" id="pokaz_hue">
-				<div class="item active">
-					<img src="grafika/philips_hue_1.jpg" alt="hue">
-			    </div>
-
-			    <div class="item">
-				    <img src="grafika/philips_hue_2.jpg" alt="hue">
-			    </div>
-
-			    <div class="item">
-				    <img src="grafika/philips_hue_3.jpg" alt="hue">
-			    </div>
-			  <a class="left carousel-control" href="#carousel_philips_hue" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel_philips_hue" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			</div>
-		</div>
-		<p class="english well">Create a vibrant ambience with the Hue Play light bar. Choose from 16 million colours to experience different light effects. Lay it on the floor, let it stand on the cabinet, or mount it on the back of the TV and paint your wall with light. Connect it to a Hue Bridge* for full smart experience. This base kit provides two light points and a power supply.</p>
-		<p class="polski well">Z lampką podłużną Hue Play wykreujesz energetyzującą atmosferę. A dzięki 16 milionom kolorów do wyboru, uzyskasz rozmaite efekty oświetleniowe. Lampkę możesz położyć na podłodze lub komodzie, przymocować z tyłu telewizora lub rozświetlić nią ściany. Jeśli natomiast połączysz z mostkiem Hue*, zmienisz ją we w pełni inteligentne urządzenie. W podstawowym zestawie znajdziesz dwie lampki i zasilacz.</p>
-		<hr class="up">
-		<section class="row">
-			<div class="col-sm-8">
-				<input type="text" id="komentarz" placeholder="dodaj swój komentarz" class="form-control">
-			</div>
-			<div class="col-sm-2">
-				<input type="text" id="imie" placeholder="Twoje imie lub nick" class="form-control">
-			</div>
-			<div class="col-sm-2">
-				<button class="btn btn-default" onclick="dodaj()">dodaj komentarz!</button>
-			</div>
-		</section>
-		<section class="row" id="komentarze">
-		</section>
-	</article>
-	<!-- zawartość drugiego artykułu -->
-	<article id="AI_article" class="well" style="display: none;">
-		<header class="text-center">
-			<img class="img-rounded" src="grafika/AI.jpg">
-			<h2 class="polski">Potencjał sztucznej inteligencji</h2>
-			<h2 class="english">The potential of AI</h2>
-		</header>
-		<section>
-			<p class="english">Google is using the Internet of Things (IoT) and artificial intelligence from its DeepMind acquisition to reduce energy consumption in its data centres by as much as 30 percent.</p>
-			<p class="english">Thexs programme could be highly significant: a 2017 report from Climate Change News suggested that data centres and the world communications sector could consume 20 percent of the world’s power by 2025.</p>
-			<p class="english">In 2016, Google and DeepMind jointly developed an AI-powered recommendation system to improve the energy efficiency of the data centres, which run popular applications such as search, Gmail, and YouTube. But now DeepMind’s AI is directly controlling cooling independently in the facilities. Every five minutes, the cloud-based AI takes a snapshot of the cooling system from thousands of sensors and feeds it into DeepMind’s deep neural networks, which predict how different combinations of potential actions will affect future energy consumption.</p>
-
-			<p class="polski">Google używa internetu rzeczy (IoT) i sztucznej inteligencji z ich nabytku w DeepMind, by ograniczyć zużycie energii w swoich centrach przetwarzania danych  o nawet 30 procent.
-			</p>
-
-			<p class="polski">Program może być niesamowicie przydatny: w raporcie z 2017 Climate Change News jest powiedziane, że centra przetwarzania danych mogą pochłaniać 20 procent energii elektrycznej wytwarzanej na świecie jeszcze przed 2025.
-			</p>
-
-			<p class="polski">Google i DeepMind wspólnie stworzyli system porad oparty na sztucznej inteligencji by zwiększyć oszczędność energii w centrach przetwarzania danych, które zasilają popularne aplikacje, takie jak wyszukiwarkę, Gmail i YouTube. Teraz AI DeepMind samodzielnie kontroluje systemy chłodzenia. Co pięć minut, AI zamieszczone w chmurze pobiera pomiary tysięcy czujników z systemów chłodzenia i decyduje jak różne kombinacje potencjalnym działań wpłyną na utrzymanie optymalnej temperatury najniższym kosztem
-			</p>
-		</section>
-			<section class="text-center">
-				<img src="grafika/AI_1.jpg" style="width: auto; height: 300px;">
-				<section id="ciekawostka">
-					<br><br>
-					<p class="polski well">Układ chłodzenia w centrum przetwarzania danych Google jest w tym samym motywie kolorystycznym, co jego ikoniczne logo</p>
-					<p class="english well">The cooling system in Googles data centre has the same colour pallet as its iconic logo</p>
-				</section>
-				<!-- odtwarzacz YouTube, o elastycznych rozmiarach dzięki wykorzystaniu bootstrapa -->
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/7pkNt3szF1A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-			</section>
-	</article>
-
-	<!-- zawartość trzeciego artykułu -->
-	<article id="o_nas_article" class="well" style="display: none;">
-		<header class="text-center">
-			<img class="img-rounded" src="grafika/about_us.png">
-			<h2 class="polski">O nas</h2>
-			<h2 class="english">About us</h2>
-		</header>
-		<section>
-			<p class="polski">Strona ta opiera się na technologii Bootstrap 3, która został dodatkowo spersonalizowana wedle mojego własnego "widzi mi się" przy pomocy klasycznego języka CSS.</p>
-			<p class="english">This website is based on Bootstrap 3 and additionally personalised according to my own needs with the help of a classic CSS.</p>
-
-			<p class="polski">Wszystko - od układu strony, przez menu nawigacyjne, po galerią z grafiką przy HomeKit - cały szkielet strony został stworzony przy pomocy Boootsrapa.</p>
-			<p class="english">Everything - starting with object placement, through the navigation menu, all the way to photo gallery of HomeKit - the whole core has been created Bootstrap.</p>
-			<hr>
-			<p class="polski">Dodatkowe efekty wizualne takie jak animacje ikon, cienie po najechaniu na podsumowanie artykuły, fikuśne czcionki, i dopasowanie rozmiaru grafik zostały skoordynowane przy pomocy klasycznego CSS.</p>
-			<p class="english">Additional effects such as animated icons, shadows after hovering the thumbnail, fancy fonts and adjusted image overflow were arranged with assistance of classic CSS.</p>
-			<hr>
-			<p class="polski">W menu wyboru języka zastosowano animacje i przezroczystość.</p>
-			<p class="english">The language menu uses animations and opacity feature.</p>
-			<section class="text-center">
-				<img src="grafika/menu.png" class="menu" onclick="document.getElementById('wybor_jezyka').click();">
-			</section>
-			<hr>
-			<p class="polski">Rozwijane menu pozwala wybrać użytkownikowi czcionkę, która odpowiada jego preferencjom.</p>
-			<p class="english">Drop-down menu lets the user choose a font, which suits their needs.</p>
-			<section class="text-center">
-				<img src="grafika/font.png" class="menu">
-			</section>
-			<hr>
-			<p class="polski">Dla nocnych marków istnieje możliwość przeglądania strony w przyjaznym dla oka trybie ciemnym - cecha konieczna dla każdej nowoczesnej aplikacji.</p>
-			<p class="polski">Dodatkowo, zastosowanie galerii pozwala lepiej zagospodarować miejscem na stronie.</p>
-			<p class="english">Night owls can view this website in eye-friendly night mode - a feature vital for a modern app.</p>
-			<p class="english">Additionally, making use of Bootstrap gallery makes it possible to save space on the site.</p>
-			<section class="text-center">
-				<img src="grafika/ciemny.png" class="menu" onclick="zmiana_motywu()">
-			</section>
-			<hr>
-			<p class="polski">Przycisk powrotu pozwala na włączenie menu wyboru artykułów bez utraty preferencji użytkownika odnośnie wyglądu i języka strony.</p>
-			<p class="english">Return button lets you activate the article selection menu without using data regarding user's language and theme preferences.</p>
-			<hr>
-			<p class="polski">Strona jest w pełni responsywna</p>
-			<p class="english">This website is fully responsive</p>
-			<section class="text-center">
-				<img src="grafika/res1.png" class="menu">
-				<p class="polski">Widok na szerokim urządzeniu.</p>
-				<p class="english">Wide screen view.</p>
-				<hr>
-				<img src="grafika/res2.png" class="menu">
-				<p class="polski">Widok na średnim urządzeniu.</p>
-				<p class="english">Moderate-width screen view.</p>
-				<hr>
-				<img src="grafika/res3.png" class="menu">
-				<p class="polski">Widok na urządzeniu mobilnym.</p>
-				<p class="english">Mobile screen view.</p>
-			</section>
-
-		</section>
-	</article>
-<!-- najważniejszy skrypt, jest sercem całej strony -->
-<script src="script.js"></script>
+	</section>
+  	<!-- data management -->
+  	<script src="core.js"></script>
 </body>
 </html>
